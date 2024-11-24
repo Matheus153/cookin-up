@@ -1,5 +1,17 @@
 <script lang="ts">
-    export default {}
+import { obterCategorias } from '@/http';
+import type ICategoria from '@/interfaces/ICategoria';
+
+    export default {
+      data() {
+        return {
+          categorias: [] as ICategoria[]
+        }
+      },
+      async created() {
+        this.categorias = await obterCategorias()
+      }
+    }
 </script>
 
 <template>
@@ -9,7 +21,9 @@
         <p class="paragrafo-lg intrucoes"></p>
 
         <ul class="categorias">
-
+          <li v-for="categoria in categorias" :key="categoria.nome">
+            {{ categoria.nome }}
+          </li>
         </ul>
 
         <p class="paragrafo dica">
