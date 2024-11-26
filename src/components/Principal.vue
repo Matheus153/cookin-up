@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Rodape from './Rodape.vue';
     import SelectIngredientes from './SelectIngredientes.vue';
     import SuaLista from './SuaLista.vue';
     import Tag from './Tag.vue';
@@ -9,7 +10,7 @@
                 ingredientes: [] as string[]
             };
         },
-        components: { SelectIngredientes, Tag, SuaLista },
+        components: { SelectIngredientes, Tag, SuaLista, Rodape},
         methods: {
           adicionarIngrediente(ingrediente: string) {
             this.ingredientes.push(ingrediente)
@@ -29,7 +30,9 @@
         <SelectIngredientes 
         @adicionar-ingrediente="adicionarIngrediente"
         @remover-ingrediente="removerIngrediente"/>
-    </main>
+  
+    </main> 
+    <Rodape/>
 </template>
 
 <style scoped>
