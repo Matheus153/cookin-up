@@ -5,6 +5,7 @@ import CardCategoria from './CardCategoria.vue';
 import BotaoPrincipal from './BotaoPrincipal.vue';
 
     export default {
+      name: 'SelectIngredientes',
       data() {
         return {
           categorias: [] as ICategoria[]
@@ -14,7 +15,7 @@ import BotaoPrincipal from './BotaoPrincipal.vue';
         this.categorias = await obterCategorias()
       },
       components: { CardCategoria, BotaoPrincipal },
-      emits: ['adicionarIngrediente', 'removerIngrediente']	
+      emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']	
     }
 </script>
 
@@ -38,7 +39,7 @@ import BotaoPrincipal from './BotaoPrincipal.vue';
             *Atenção: consideramos que você tem em casa sal, pimenta e água
         </p>
         
-        <BotaoPrincipal texto="Buscar receitas"/>
+        <BotaoPrincipal texto="Buscar receitas" v-on:click="$emit('buscarReceitas')"/>
     </section>
 </template>
 

@@ -1,22 +1,29 @@
 <script lang="ts">
+    import MostrarReceitas from './MostrarReceitas.vue';
     import Rodape from './Rodape.vue';
     import SelectIngredientes from './SelectIngredientes.vue';
     import SuaLista from './SuaLista.vue';
     import Tag from './Tag.vue';
 
+    type Pagina = 'SelectIngredientes' | 'MostrarReceitas'
+
     export default {
         data() {
             return {
-                ingredientes: [] as string[]
+                ingredientes: [] as string[],
+                conteudo: 'SelectIngredientes' as Pagina
             };
         },
-        components: { SelectIngredientes, Tag, SuaLista, Rodape},
+        components: { SelectIngredientes, Tag, SuaLista, Rodape, MostrarReceitas},
         methods: {
           adicionarIngrediente(ingrediente: string) {
             this.ingredientes.push(ingrediente)
           },
           removerIngrediente(ingrediente: string) {
             this.ingredientes = this.ingredientes.filter(item => item !== ingrediente)
+          },
+          navegar(pagina: Pagina) {
+            this.conteudo = pagina
           }
         } 
     }
@@ -27,9 +34,19 @@
     <main class="conteudo-principal">
         <SuaLista :ingredientes="ingredientes"/>
 
-        <SelectIngredientes 
-        @adicionar-ingrediente="adicionarIngrediente"
-        @remover-ingrediente="removerIngrediente"/>
+        <KeepAlive include="SelectIngredientes">
+          <SelectIngredientes
+          v-if="conteudo === 'SelectIngredientes'" 
+          @adicionar-ingrediente="adicionarIngrediente"
+          @remover-ingrediente="removerIngrediente"
+          @buscar-receitas="navegar('MostrarReceitas')"
+          />
+
+          <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'"
+          :ingredientes="ingredientes"
+          @editar-receitas="navegar('SelectIngredientes')"
+          />
+        </KeepAlive>
   
     </main> 
     <Rodape/>
