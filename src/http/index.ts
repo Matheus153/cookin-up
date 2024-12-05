@@ -13,7 +13,7 @@ export async function obterCategorias() {
 }
 
 export async function obterReceitas() {
-    return obterDadosURL<IReceita[]>('https://gist.githubusercontent.com/Matheus153/df47a31dd778f5064ad53c9c8a84e626/raw/5a3a7a1944598f2fd5af2dac9664a8c3f379125d/receitas.json')
+    return obterDadosURL<IReceita[]>('https://gist.githubusercontent.com/Matheus153/df47a31dd778f5064ad53c9c8a84e626/raw/fddc8e2d01c8c808ad764d571e7a71f68796b825/receitas.json')
 }
 
 /* export async function obterCategorias() {
