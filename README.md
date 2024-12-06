@@ -1,6 +1,19 @@
 # cookin-up
 
-This template should help get you started developing with Vue 3 in Vite.
+<div align="center">
+	<img src="public/cookin.png" width="400"/>
+</div>
+
+## :dart: Objetivo
+Cookin'UP é um modelo de site que permite você explorar o Chef que há dentro de você. Escolha seus ingredientes e ele montará sua receita!
+
+## :hammer_and_wrench: Ferramentas
+
+-   [Vite](https://vite.dev/)
+-   [Vue.js](https://vuejs.org/)
+-   [Vercel](https://vercel.com)
+-   [Npm](hhttps://www.npmjs.com/)
+
 
 ## Recommended IDE Setup
 
